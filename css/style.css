@@ -13,3 +13,25 @@ img {
     width: 800px;
     height: 500px;
 }
+
+.indicator-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    margin: 0 12px;
+    background-color: #000;
+    transition: background-color .3s;
+    border-radius: 50%;
+}
+
+#slideshow ul.indicator {
+    text-align: center;
+    position: relative;
+    bottom: 50px;
+}
+
+.indicator-item.active {
+    background-color: yellow;
+}
