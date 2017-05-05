@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,9 +14,51 @@
 
 
 
-    
+
 
 
     <script src="js/script.js" charset="utf-8"></script>
+</body>
+</html>-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="slideshow">
+        <div id="rail">
+
+        </div>
+    </div>
+
+<div id="images"></div>
+
+<script src="js/script.js" charset="utf-8"></script>
+<script>
+getImages();
+/*(() => {
+    var url = "https://www.skrzypczyk.fr/slideshow.php";
+      $.getJSON( url, {
+        format: "json"
+    }).done(( data ) => {
+            //console.log(data[0]);
+            $.each(data, (key, item) => {
+                $("<img>").attr("src", item.url).appendTo("#rail");
+            });
+        });
+    })();*/
+</script>
+
 </body>
 </html>

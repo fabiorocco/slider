@@ -1,10 +1,28 @@
-function ajaxO() {
-    var url =
+function getImages() {
+    var url = "https://www.skrzypczyk.fr/slideshow.php";
+    $.getJSON(url, {
+        format: "json"
+    }).done((data) => {
+        console.log(data);
+        $.each(data, (key, item) => {
+            $("<img>").attr({"src": item.url, "alt": item.desc, "data-title": item.title}).appendTo("#rail");
+        })
+    })
 }
 
 
-
-
+/*
+(function() {
+    var url = "https://www.skrzypczyk.fr/slideshow.php";
+      $.getJSON( url, {
+        format: "json"
+      }).done(function( data ) {
+            //console.log(data[0]);
+            $.each(data, function(key, item) {
+                $("<img>").attr("src", item.url).appendTo("#rail");
+            });
+        });
+    })();*/
 
 
 
