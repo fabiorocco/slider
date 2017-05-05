@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#rail {
+    width: 1200px;
+}
+#slideshow {
+    width: 300px;
+    overflow: hidden;
+}
