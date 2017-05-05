@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+
+.img_slide {
+    position: absolute;
+}
+
 #rail {
     width: 1200px;
 }
