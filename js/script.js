@@ -2,7 +2,8 @@
  * Definition of the variables
  */
 
-var timeInterval = 10000;
+var timeInterval = 2000;
+var timeTransition = 2000;
 var startDefault = true;
 var pauseDefault = false;
 var slideshow = document.getElementById('slideshow');
@@ -23,19 +24,26 @@ mc.on("panleft panright tap", function(ev) {
 });
 
 $("#next").click(nextImage);
-
+var reverse = 1;
 function nextImage() {
-    $('#rail').animate({"margin-left":"-800px"}, 2000, changeFirstImg)
+    if (reverse == 1) {
+        changePreviousImg();
+        $('#rail').animate({"margin-right":"-800px"}, timeInterval);
+    }
+}
+
+function changePreviousImg() {
+    $('#rail').css('margin-right', '0px');
+    $('#rail img:first').before($('#rail img:last'));
 }
 
 function changeFirstImg() {
     $('#rail').css('margin-left', '0px');
-    $('#rail img:last').after($('#rail img:first'))
+    $('#rail img:last').after($('#rail img:first'));
+
 }
 
-
-setInterval(nextImage, 4000);
-
+setInterval(nextImage, 2000);
 
 function getImages() {
     var url = "https://www.skrzypczyk.fr/slideshow.php";
@@ -43,7 +51,7 @@ function getImages() {
         format: "json"
     }).done((data) => {
         $.each(data, (key, item) => {
-            $("<img>").attr({"src": item.url, "alt": item.desc, "data-title": item.title}).appendTo("#rail");
+            $("<img>").attr({"id": key,"src": item.url, "alt": item.desc, "data-title": item.title}).appendTo("#rail");
         })
     })
 }
