@@ -2,12 +2,14 @@
  * Definition of the variables
  */
 
-var timeInterval = 10000;
+var timeInterval = 2000;
+var timeTransition = 2000;
 var startDefault = true;
 var pauseDefault = false;
 var slideshow = document.getElementById('slideshow');
 var slideshowChild = slideshow.children;
 var listElement = [];
+var reverse = 0;
 // create a simple instance
 var mc = new Hammer(slideshow);
 
@@ -22,20 +24,38 @@ mc.on("panleft panright tap", function(ev) {
     if (ev.type === "tap") {}
 });
 
-$("#next").click(nextImage);
+setInterval(nextImage, timeInterval);
+
+//$("#next").click(nextImage);
+
+$("#previous").click(() => {
+    reverse = 1;
+    nextImage();
+});
+$("#next").click(() => {
+    reverse = 0;
+    nextImage();
+});
 
 function nextImage() {
-    $('#rail').animate({"margin-left":"-800px"}, 2000, changeFirstImg)
+    if (startDefault == true) {
+        if (reverse == 0) {
+            $('#rail').animate({"margin-left":"-800px"}, timeInterval,changeFirstImg);
+        } else {
+            changePreviousImg();
+            $('#rail').animate({"margin-right":"-800px"}, timeInterval);
+        }
+    }
 }
 
 function changeFirstImg() {
     $('#rail').css('margin-left', '0px');
-    $('#rail img:last').after($('#rail img:first'))
+    $('#rail img:last').after($('#rail img:first'));
 }
 
-
-setInterval(nextImage, 4000);
-
+function changePrevioustImg() {
+    $('#rail img:first').before($('#rail img:last'));
+}
 
 function getImages() {
     var url = "https://www.skrzypczyk.fr/slideshow.php";
@@ -43,7 +63,22 @@ function getImages() {
         format: "json"
     }).done((data) => {
         $.each(data, (key, item) => {
-            $("<img>").attr({"src": item.url, "alt": item.desc, "data-title": item.title}).appendTo("#rail");
+            $("<img>").attr({"id": key,"src": item.url, "alt": item.desc, "data-title": item.title}).appendTo("#rail");
         })
     })
 }
+
+// Mettre sur pause/start au hover
+$('#rail').mouseenter(
+    () => {startDefault = false;}
+)
+$('#rail').mouseleave(
+    () => {startDefault = true;}
+)
+// Mettre sur pause/start au click
+$("#pause").click(() => {
+    startDefault = false;
+});
+$("#play").click(() => {
+    startDefault = true;
+});

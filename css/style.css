@@ -36,3 +36,5 @@ img {
 .indicator-item.active {
     background-color: yellow;
 }
+
+/* Pour le rognage, penser background-size: cover; */
