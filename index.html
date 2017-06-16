@@ -3,21 +3,39 @@
 <head>
   <meta charset="utf-8">
   <title>Slider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Lato" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style media="screen">
+
+
+  </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <h1>Slider</h1>
+        </nav>
+    </header>
     <div id="slideshow">
+        <div class="contain-actions">
+            <div id="left">
+                <i class="material-icons" style="font-size:64px; cursor:pointer; color: rgba(0,0,0, 0.8);" id="previous">keyboard_arrow_left</i>
+            </div><!--
+            --><div id="center" style="width:60%;text-align:center; display:inline-block">
+                <i class="material-icons" style="font-size:64px; cursor:pointer; color: rgba(0,0,0, 0.8);" id="play">play_arrow</i>
+                <i class="material-icons" style="font-size:64px; cursor:pointer; color: rgba(0,0,0, 0.8);" id="pause">pause</i>
+            </div><!--
+            --><div id="right" style="width:20%;text-align:center; display:inline-block">
+                <i class="material-icons" style="font-size:64px; cursor:pointer; color: rgba(0,0,0, 0.8);" id="next">keyboard_arrow_right</i>
+            </div>
+        </div>
         <div id="rail">
 
         </div>
+        <ul class="indicator">
+        </ul>
     </div>
-    <button id="previous">previous</button>
-    <button id="pause">Pause</button>
-    <button id="play">Play</button>
-    <button id="next">next</button>
-
-
-
     <script src="js/hammer.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js" charset="utf-8"></script>

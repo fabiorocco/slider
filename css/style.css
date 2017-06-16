@@ -1,18 +1,45 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Lato', sans-serif;
 }
-#rail {
-    width: 2400px;
+body {
+    background-color: #e2e2e2;
+}
+header {
+    height:72px;
+    width: 100%;
+    position:fixed;
+    margin-bottom:72px;
+    background-color: #212121;
+}
+header nav {
+    height:72px;
+    width: 100%;
+    margin-bottom:72px;
+    text-align:center
+}
+h1 {
+    color: white;
+    font-size:22px;
+    margin-top: 25px;
 }
 #slideshow {
     width: 800px;
     overflow: hidden;
+    margin: 0 auto;
 }
-img {
+/*img, div.test {
     width: 800px;
     height: 500px;
-    /*position: absolute;*/
+    position: absolute;
+}*/
+div.img {
+    width: 800px;
+    height: 500px;
+    display: inline-block;
+    background-position: center;
+    background-size: cover;
 }
 
 .indicator-item {
@@ -37,4 +64,37 @@ img {
     background-color: yellow;
 }
 
-/* Pour le rognage, penser background-size: cover; */
+.meta-img {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 2%;
+    /*position: absolute;*/
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.actions {
+    position: absolute;
+    top: 250px; /* hauteur : 500 + 72*/
+    left: 47%;
+}
+
+.contain-actions {
+    height: 100%;
+    position: relative;
+    top: 290px;
+}
+
+#right, #left, #center {
+    text-align:center;
+    display:inline-block
+}
+
+#right, #left {
+    width:20%;
+}
+#center {
+    width:60%;
+}
