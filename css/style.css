@@ -3,28 +3,53 @@
     padding: 0;
 }
 #rail {
-    width: 2400px;
+    width: 3200px;
 }
+
 #slideshow {
     width: 800px;
     overflow: hidden;
+    margin: 0 auto;
 }
-img {
+
+@media all and (max-width: 800px) {
+  #slideshow {
+      width: 600px;
+  }
+
+  div.img {
+    width: 600px !important;
+  }
+}
+
+@media all and (max-width: 600px) {
+  #slideshow {
+      width: 400px !important;
+  }
+
+  div.img {
+    width: 400px !important;
+  }
+}
+
+div.img {
     width: 800px;
     height: 500px;
-    /*position: absolute;*/
+    display: inline-block;
+    background-position: center;
+    background-size: cover;
 }
 
 .indicator-item {
     display: inline-block;
     position: relative;
-    cursor: pointer;
     height: 16px;
     width: 16px;
     margin: 0 12px;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.2);
     transition: background-color .3s;
     border-radius: 50%;
+    transition-duration: 0.4s
 }
 
 #slideshow ul.indicator {
@@ -33,8 +58,7 @@ img {
     bottom: 50px;
 }
 
-.indicator-item.active {
-    background-color: yellow;
+.indicator-active {
+    background-color: rgba(0, 0, 0, 0.9);
+    transition-duration: 0.4s
 }
-
-/* Pour le rognage, penser background-size: cover; */
