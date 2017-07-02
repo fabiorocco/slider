@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: #e2e2e2;
+}
+
+header, header nav, #slideshow {
+    height: 11vh;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    background-color: #212121;
+}
+
+header nav, div.container-actions div {
+    text-align: center;
+}
+
+h1, div.text {
+    color: white;
+}
+
+h1 {
+    font-size: 22px;
+    margin-top: 25px;
+}
+
+#container {
+    width: 80%;
+    margin: auto;
+}
+
+#slideshow {
+    overflow: hidden;
+}
+
+div.img, #slideshow {
+    height: 89vh;
+}
+
+div.img, div.container-actions div, div.text {
+    display: inline-block;
+}
+
+div.img {
+    background-position: center;
+    background-size: cover;
+}
+
+div.container-actions {
+    height: 100%;
+    position: relative;
+    top: 55.5vh;
+}
+
+div.container-actions div.left, div.container-actions div.right {
+    width: 20%;
+}
+
+div.container-actions div.center {
+    width: 60%;
+}
+
+div.container-actions div i {
+    font-size: 64px;
+    cursor: pointer;
+    color: rgba(0,0,0, 0.8);
+}
+
+div.text {
+    margin: 2%;
+    padding: 2%;
+    background-color: rgba(0,0,0, 0.3);
+}
