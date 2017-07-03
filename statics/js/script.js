@@ -9,6 +9,22 @@ $(() => {
     let slideshow = $('#slideshow');
     let slideshowWidth = slideshow.width();
 
+    let hammerSlideShow = document.getElementById('container')
+    let hammer = new Hammer(hammerSlideShow);
+
+    function gestureOnMobile() {
+        hammer.on("panleft panright", function(ev) {
+           if (ev.type === "panleft") {
+               nextImage();
+           }
+           if (ev.type === "panright") {
+               previousImage();
+            }
+        });
+    }
+
+    gestureOnMobile();
+
      function getImages(url) {
          $.getJSON(url, {
              format: 'json'
@@ -178,3 +194,5 @@ $(() => {
     $('.container-actions').css('visibility', 'hidden');
 
 });
+
+
