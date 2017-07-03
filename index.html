@@ -1,29 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Slider</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider Project &middot; Jérémy BACHAYANI &amp; Fabio ROCCO | 3IW2</title>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Lato" rel="stylesheet">
+    <link rel="stylesheet" href="statics/css/style.css">
 </head>
 <body>
-    <div id="slideshow">
-        <div id="rail">
-
+    <header>
+        <nav>
+            <h1>Slider</h1>
+        </nav>
+    </header>
+    <div id="container">
+        <div class="container-actions">
+            <div class="left">
+                <i class="material-icons" id="previous">keyboard_arrow_left</i>
+            </div><!--
+            --><div class="center">
+                <i class="material-icons" id="play">play_arrow</i>
+                <i class="material-icons" id="pause">pause</i>
+            </div><!--
+            --><div class="right">
+                <i class="material-icons" id="next">keyboard_arrow_right</i>
+            </div>
         </div>
-    </div>
-    <button id="previous">previous</button>
-    <button id="pause">Pause</button>
-    <button id="play">Play</button>
-    <button id="next">next</button>
+		<div id="slideshow">
+			<div id="rail">
 
-
-
-    <script src="js/hammer.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/script.js" charset="utf-8"></script>
-    <script>
-        getImages();
-    </script>
-
+			</div>
+		</div>
+        <ul class="indicator"></ul>
+	</div>
+    <script src="statics/js/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="statics/js/script.js" charset="utf-8"></script>
 </body>
 </html>
