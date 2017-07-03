@@ -9,21 +9,21 @@ $(() => {
     let slideshow = $('#slideshow');
     let slideshowWidth = slideshow.width();
 
-    let hammerSlideShow = document.getElementById('container')
+    let hammerSlideShow = document.getElementById('container');
     let hammer = new Hammer(hammerSlideShow);
 
-    function gestureOnMobile() {
-        hammer.on("panleft panright", function(ev) {
-           if (ev.type === "panleft") {
+    function panMobile() {
+        hammer.on("panleft panright", (event) => {
+           if (event.type === "panleft") {
                nextImage();
            }
-           if (ev.type === "panright") {
+           if (event.type === "panright") {
                previousImage();
             }
         });
     }
 
-    gestureOnMobile();
+    panMobile();
 
      function getImages(url) {
          $.getJSON(url, {
@@ -100,9 +100,13 @@ $(() => {
         clickPlay();
     });
 
-    $('#next').click(nextImage);
+    $('#next').click(() => {
+        nextImage();
+    });
 
-    $('#previous').click(previousImage);
+    $('#previous').click(() => {
+        previousImage();
+    });
 
     function fAutoMode(){
     	if (autoMode) {
@@ -194,5 +198,3 @@ $(() => {
     $('.container-actions').css('visibility', 'hidden');
 
 });
-
-
