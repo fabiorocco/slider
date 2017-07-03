@@ -7,9 +7,11 @@
 body {
     background-color: #e2e2e2;
 }
+header, header nav {
+    height: 11vh;
+}
 
 header, header nav, #slideshow {
-    height: 11vh;
     width: 100%;
 }
 
