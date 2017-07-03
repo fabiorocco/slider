@@ -1,6 +1,7 @@
 $(() => {
     const timeInterval = 4000;
     const timeTransition = 2000;
+    const timeTransitionBubbled = 500;
     const url = 'https://www.skrzypczyk.fr/slideshow.php';
     let autoMode = true;
     let scrolling = false;
@@ -24,6 +25,13 @@ $(() => {
                  $(text).appendTo('#'+key);
                  $('#rail').width(downloadedImage * slideshowWidth);
                  image.width(slideshowWidth);
+                 let liAttr = {
+                     'data-key': key,
+                     'class': 'indicator-item active'
+                 }
+                 let li = $('<li>').attr(liAttr).appendTo('.indicator');
+                 li.click(clickBubble);
+                 fillBubble(0);
              });
          });
     }
@@ -53,6 +61,21 @@ $(() => {
     	$('#play').show();
     }
 
+    function clickBubble() {
+        if(!$(this).hasClass('active')) {
+            let iterate = 0;
+            let index = $(this).data('key');
+            let activeIndex = $('.active').data('key');
+            if (index > activeIndex) {
+                iterate = index - activeIndex;
+                nextImage(true, iterate);
+            } else {
+                iterate = activeIndex - index;
+                previousImage(true, iterate);
+            }
+        }
+    }
+
     $('#pause').click(() => {
         clickPause();
     });
@@ -71,13 +94,12 @@ $(() => {
     	}
     }
 
-    function nextImage() {
+    function nextImage(bubble = false, iterate = 0) {
     	if(!scrolling){
     		scrolling = true;
-            undisplayText();
     		$('#rail').animate(
     			{'margin-left': '-' + slideshowWidth + 'px'},
-    			timeTransition,
+    			((bubble) ? timeTransitionBubbled : timeTransition),
                 () => {
         			$('#rail').css('margin-left', '0px');
         			$('#rail .img:last').after(
@@ -85,13 +107,17 @@ $(() => {
                     );
                 }
     		).promise().done(() => {
+                fillBubble($('#rail .img:first').attr('id'));
                 displayText();
                 scrolling = false;
+                if (--iterate > 0) {
+                    nextImage(true, iterate);
+                }
             });
     	}
     }
 
-    function previousImage() {
+    function previousImage(bubble = false, iterate = 0) {
     	if(!scrolling){
             undisplayText();
     		scrolling = true;
@@ -99,15 +125,24 @@ $(() => {
     		$('#rail .img:first').before($('#rail .img:last'));
     		$('#rail').animate(
     			{'margin-left':'0px'},
-    			timeTransition,
+                ((bubble) ? timeTransitionBubbled : timeTransition),
     			() => {
 
     			}
     		).promise().done(() => {
+                fillBubble($('#rail .img:first').attr('id'));
                 displayText();
                 scrolling = false;
+                if (--iterate > 0) {
+                    previousImage(true, iterate);
+                }
             });
     	}
+    }
+
+    function fillBubble(id) {
+        $('li.active').removeClass('active');
+        $('.indicator-item[data-key="' + id + '"]').addClass('active');
     }
 
     function undisplayText() {

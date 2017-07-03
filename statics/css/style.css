@@ -67,9 +67,12 @@ div.container-actions div.center {
     width: 60%;
 }
 
+div.container-actions div i, ul.indicator li.indicator-item {
+    cursor: pointer;
+}
+
 div.container-actions div i {
     font-size: 64px;
-    cursor: pointer;
     color: rgba(0,0,0, 0.8);
 }
 
@@ -77,4 +80,26 @@ div.text {
     margin: 2%;
     padding: 2%;
     background-color: rgba(0,0,0, 0.3);
+}
+
+ul.indicator li.indicator-item.active {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#container ul.indicator {
+    text-align: center;
+    position: relative;
+    bottom: 10vh;
+}
+
+.indicator-item {
+    display: inline-block;
+    position: relative;
+    height: 16px;
+    width: 16px;
+    margin: 0 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: background-color .2s;
+    border-radius: 50%;
+    transition-duration: 0.4s
 }
